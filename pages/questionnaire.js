@@ -68,7 +68,6 @@ export default function Questionnaire() {
           data-netlify="true"
           netlify-honeypot="bot-field"
           className="space-y-4"
-          netlify
         >
           {/* Hidden field for Netlify's honeypot anti-spam technique */}
           <input type="hidden" name="form-name" value="trial-session-questionnaire" />
@@ -221,9 +220,9 @@ export default function Questionnaire() {
             />
           </div>
           <div className="w-full flex justify-center">
-          <button type="submit" className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600">
-            Submit
-          </button>
+            <button type="submit" className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600">
+              Submit
+            </button>
           </div>
         </form>
       </main>
