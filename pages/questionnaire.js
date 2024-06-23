@@ -68,6 +68,7 @@ export default function Questionnaire() {
           data-netlify="true"
           netlify-honeypot="bot-field"
           className="space-y-4"
+          netlify
         >
           {/* Hidden field for Netlify's honeypot anti-spam technique */}
           <input type="hidden" name="form-name" value="trial-session-questionnaire" />
