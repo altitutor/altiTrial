@@ -1,6 +1,5 @@
-import Head from 'next/head'
-import { useState } from 'react'
-import { useRouter } from 'next/router'
+import Head from 'next/head';
+import { useState } from 'react';
 
 export default function Questionnaire() {
   const [formData, setFormData] = useState({
@@ -17,40 +16,18 @@ export default function Questionnaire() {
   });
 
   const [showOtherInput, setShowOtherInput] = useState(false);
-  const [disableSelectOption, setDisableSelectOption] = useState(false);
-  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     if (name === 'howDidYouHear') {
       setShowOtherInput(value === 'other');
-      if (value !== '') {
-        setDisableSelectOption(true);
-      }
     }
 
     setFormData({
       ...formData,
       [name]: value
     });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Form validation
-    if (formData.name === '' ||
-        formData.howDidYouHear === '' ||
-        formData.yearLevel === '' ||
-        formData.school === '' ||
-        formData.subjects === '' ||
-        formData.futurePlans === '') {
-      alert('Please fill in all required fields.');
-      return;
-    }
-
-    // Form submission will be handled by Netlify
-    router.push('/success');
   };
 
   return (
@@ -62,21 +39,22 @@ export default function Questionnaire() {
       <main className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <h1 className="text-2xl font-bold mb-4">Trial Session Questionnaire</h1>
         <form
-          onSubmit={handleSubmit}
           name="trial-session-questionnaire"
           method="POST"
+          action="/success" // This specifies the Netlify success page.
           data-netlify="true"
           netlify-honeypot="bot-field"
           className="space-y-4"
         >
-          {/* Hidden field for Netlify's honeypot anti-spam technique */}
+          {/* Hidden field for Netlify form handling */}
           <input type="hidden" name="form-name" value="trial-session-questionnaire" />
+          
+          {/* Honeypot field for basic bot prevention */}
           <p className="hidden">
-            <label>
-              Don’t fill this out if you're human: <input name="bot-field" />
-            </label>
+            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
           </p>
 
+          {/* Form fields */}
           <div>
             <label className="block text-gray-700 mb-2">
               Name <span className="text-red-500">*</span>
@@ -102,7 +80,7 @@ export default function Questionnaire() {
               required
               className="w-full border border-gray-300 p-2 rounded"
             >
-              <option value="" disabled={disableSelectOption}>Select an option</option>
+              <option value="" disabled>Select an option</option>
               <option value="friend">Recommended by a friend</option>
               <option value="google">Google search</option>
               <option value="social">Saw social media posts</option>
@@ -219,6 +197,7 @@ export default function Questionnaire() {
               className="w-full border border-gray-300 p-2 rounded"
             />
           </div>
+
           <div className="w-full flex justify-center">
             <button type="submit" className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600">
               Submit
@@ -227,5 +206,5 @@ export default function Questionnaire() {
         </form>
       </main>
     </div>
-  )
+  );
 }
