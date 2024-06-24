@@ -1,45 +1,45 @@
+import React, { useState } from 'react';
 import Head from 'next/head';
 
-export default function TestForm() {
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
+    <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <Head>
-        <title>Netlify Form Test</title>
+        <title>Get in touch — Elliot Koh</title>
       </Head>
-      <main className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-4">Netlify Form Detection Test</h1>
-        <form
-          name="test-form"
-          method="POST"
-          action="/success"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          className="space-y-4"
-        >
-          <input type="hidden" name="form-name" value="test-form" />
-          <p className="hidden">
-            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-          </p>
-
+      <h1 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray-800">Contact Me</h1>
+      <form name="contact" method="POST" data-netlify="true" className="space-y-8">
+        <input type="hidden" name="form-name" value="contact" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-gray-700 mb-2">
-              Test Field <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="testField"
-              required
-              className="w-full border border-gray-300 p-2 rounded"
-            />
+            <label htmlFor="name" className="block text-lg font-semibold text-gray-700">Name<span className="text-red-500">*</span></label>
+            <input type="text" name="name" id="name" required onChange={handleChange} value={formData.name} className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" />
           </div>
-
-          <div className="w-full flex justify-center">
-            <button type="submit" className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600">
-              Submit
-            </button>
+          <div>
+            <label htmlFor="email" className="block text-lg font-semibold text-gray-700">Email<span className="text-red-500">*</span></label>
+            <input type="email" name="email" id="email" required onChange={handleChange} value={formData.email} className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" />
           </div>
-        </form>
-      </main>
+        </div>
+        <div>
+          <label htmlFor="message" className="block text-lg font-semibold text-gray-700">Message<span className="text-red-500">*</span></label>
+          <textarea name="message" id="message" rows="4" required onChange={handleChange} value={formData.message} className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500"></textarea>
+        </div>
+        <div className="flex justify-center">
+          <button type="submit" className="w-full sm:w-auto transition-all py-3 px-6 bg-[#8fb4dc] hover:bg-[#7999ba] focus:ring-blue-500 focus:ring-offset-2 text-white font-semibold rounded-3xl hover:px-8 shadow-lg shadow-[#8fb4dc]/50 hover:shadow-[#7999ba]/50 focus:outline-none focus:ring-2">
+            Send Message
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
