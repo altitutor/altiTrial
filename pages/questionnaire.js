@@ -41,8 +41,8 @@ export default function Questionnaire() {
         <form
           name="trial-session-questionnaire"
           method="POST"
-          action="/success" // This specifies the Netlify success page.
-          data-netlify="true"
+          action="/success"
+          netlify
           netlify-honeypot="bot-field"
           className="space-y-4"
         >
@@ -187,7 +187,7 @@ export default function Questionnaire() {
 
           <div>
             <label className="block text-gray-700 mb-2">
-              Topics - which topic are you up to for each these subjects? Which topic(s) have you completed already?
+              Topics - which topic are you up to for each of these subjects? Which topic(s) have you completed already?
             </label>
             <input
               type="text"
