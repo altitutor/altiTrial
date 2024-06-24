@@ -42,7 +42,7 @@ export default function Questionnaire() {
           name="trial-session-questionnaire"
           method="POST"
           action="/success"
-          netlify
+          data-netlify="true"
           netlify-honeypot="bot-field"
           className="space-y-4"
         >
