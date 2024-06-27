@@ -14,7 +14,7 @@ export default function Home() {
         <p className="text-lg text-gray-700 mb-6">
           We are excited to help you on your learning journey. Click below to get started with a trial session!
         </p>
-        <Link href="questionnaire.html">
+        <Link href="/questionnaire">
           <div className="bg-blue-500 text-white py-3 px-6 rounded-lg text-lg hover:bg-blue-600 transition">
             Go to Questionnaire
           </div>
