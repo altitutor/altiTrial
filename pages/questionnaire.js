@@ -41,18 +41,12 @@ export default function Questionnaire() {
         <form
           name="trial-session-questionnaire"
           method="POST"
+          action="/success"
           data-netlify="true"
           className="space-y-4"
         >
-          {/* Hidden field for Netlify form handling */}
           <input type="hidden" name="form-name" value="trial-session-questionnaire" />
-          
-          {/* Honeypot field for basic bot prevention */}
-          <p className="hidden">
-            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-          </p>
 
-          {/* Form fields */}
           <div>
             <label htmlFor="name" className="block text-lg font-semibold text-gray-700">
               Name <span className="text-red-500">*</span>
