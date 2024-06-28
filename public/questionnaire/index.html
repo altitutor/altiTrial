@@ -23,6 +23,7 @@
       class="space-y-4"
     >
       <input type="hidden" name="form-name" value="trial-session-questionnaire" />
+      <input type="hidden" name="subject" id="email-subject" />
 
       <div>
         <label for="name" class="block text-lg font-semibold text-gray-700">
@@ -171,6 +172,12 @@
       } else {
         otherSourceField.classList.add('hidden');
       }
+    });
+
+    document.getElementById('name').addEventListener('input', function() {
+      var name = document.getElementById('name').value;
+      var subjectField = document.getElementById('email-subject');
+      subjectField.value = 'TRIAL INFO for ' + name;
     });
   </script>
 </body>
