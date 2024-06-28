@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Submission Successful</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body, input, select, button {
+      font-family: 'Roboto', sans-serif;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
+  <main class="bg-white p-10 rounded-lg shadow-lg text-center max-w-md">
+    <h1 class="text-3xl font-bold text-green-500 mb-4">Success!</h1>
+    <p class="text-lg text-gray-700 mb-6">
+      Your form has been submitted successfully. Please show this page to the front desk.
+    </p>
+    <button
+      id="continueButton"
+      class="bg-green-500 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-600 transition mb-4 w-full"
+    >
+      Continue
+    </button>
+    <div id="confirmationStep" class="hidden">
+      <p class="text-lg text-gray-700 mb-4">
+        Are you sure you want to proceed? Make sure you have shown this to the front desk.
+      </p>
+      <div class="flex gap-4 mt-4 justify-center">
+        <button
+          id="confirmButton"
+          class="bg-blue-500 text-white py-2 px-4 rounded-lg text-lg hover:bg-blue-600 transition"
+        >
+          Yes, Proceed
+        </button>
+        <button
+          id="backButton"
+          class="bg-red-500 text-white py-2 px-4 rounded-lg text-lg hover:bg-red-600 transition"
+        >
+          No, Go Back
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('continueButton').addEventListener('click', function() {
+      document.getElementById('continueButton').classList.add('hidden');
+      document.getElementById('confirmationStep').classList.remove('hidden');
+    });
+
+    document.getElementById('confirmButton').addEventListener('click', function() {
+      window.location.href = '/presentation';
+    });
+
+    document.getElementById('backButton').addEventListener('click', function() {
+      document.getElementById('confirmationStep').classList.add('hidden');
+      document.getElementById('continueButton').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
